@@ -1,0 +1,42 @@
+import random
+import string
+
+def generate_password(m):
+    a = ''.join(random.choice(string.ascii_letters + string.digits) for i in range(m))
+    return a
+
+def generate_list_of_passwords(n, m):
+    k = []
+    h = ''
+    for i in range(n):
+        if i != 0:
+        while h in k:
+            h = generate_password(m)
+            k.append(h)
+        else:
+            h = generate_password(m)
+            k.append(h)
+        return k
+
+def gen_bingo():
+    bingo_list = random.sample(range(1, 76), 25)
+    bingo_list[12] = 0
+    bingo_card = [bingo_list[i::5] for i in range(5)]
+    return bingo_card
+
+def gen_loto():
+    loto_list = random.sample(range(1, 91), 15) + [0] * 12
+    random.shuffle(loto_list)
+    loto_card = [loto_list[i::3] for i in range(3)]
+    return loto_card
+
+import datetime as dt
+
+def get_wekend(date):
+    pass
+
+if __name__ == '__main__':
+    print(gen_bingo())
+    print(generate_password(15))
+    print(generate_list_of_passwords(2, 15))
+    print(gen_loto())
